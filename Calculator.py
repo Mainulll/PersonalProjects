@@ -5,5 +5,14 @@ while True:
         FirstNum = int(input("Enter a number: "))  #while FirstNum is an int is True, loop will break
         break
     except ValueError: #Excpet for ValueError, if anything except for a String is entered
-        print ('Try Again')  #Will print this and loop back to Start!
+        print ('Try Again\n')  #Will print this and loop back to Start!
+
+
+while True:
+    try:
+        SecondNum = int(input("Enter a number: "))
+        break
+    except ValueError:
+        print ("Try Again\n")
+
 
