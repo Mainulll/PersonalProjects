@@ -10,7 +10,7 @@ while True:
 #  mirrored the above statement to error check for an invalid user input
 while True:
     try:
-        SecondNum = int(input("Enter Your Second Number: \n"))
+        SecondNum = int(input("Enter Your Second Number: "))
         break
     except ValueError:
         print ("Try Again\n")
@@ -25,7 +25,7 @@ menu = {
     "Square Root" : "6",
     "Remainder" : "7"
 }
-
+print("\n")
 for key, value in menu.items():
     print({value},{key})
 
