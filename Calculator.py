@@ -1,3 +1,5 @@
+import math
+
 # testing using While loops
 # loop basically checks for conditions here; as Python typcasts inputs as str
 while True:
@@ -28,4 +30,19 @@ menu = {
 print("\n")
 for key, value in menu.items():
     print({value},{key})
+
+NumSelect = input("Select An Operation: ")
+for i in NumSelect:
+    if i is 1:
+        print(FirstNum + SecondNum)
+    elif i is 2:
+        print(FirstNum - SecondNum)
+    elif i is 3:
+        print(FirstNum* SecondNum)
+    elif i is 4:
+        print(FirstNum / SecondNum)
+    elif i is 5:
+        print(FirstNum ** SecondNum)
+    elif i is 6:
+        print(FirstNum )
 
