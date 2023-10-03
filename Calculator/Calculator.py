@@ -2,10 +2,17 @@ import math
 import PySimpleGUI as psg #toolkit for creating a GUI
 
 # organising the layout for the windows
+
+# setting the font
+font = ("Arial", 15)
+
 layout=[
-    [psg.Text("Enter A Number: ")],
-    [psg.Input(key='-INPUT-')], # take the number input | PySimpleGUI takes inputs and stores them in a dict, this here will allow for easy access
-    [psg.Button("Confirm")]
+    [psg.Text("Enter First Operator: "), psg.Input(key='-INPUT-')], # take the number input | PySimpleGUI takes inputs and stores them in a dict,
+    ## [psg.Text("Enter Second Number: "), psg.Input(key='-INPUT2-')],# this here will allow for easy access
+    [psg.Button("+",size=(3,3), font=font), psg.Button("-",size=(3,3), font=font), psg.Button("/",size=(3,3), font=font), 
+     psg.Button("x",size=(3,3), font=font), psg.Button("^",size=(3,3), font=font)],
+    [psg.Multiline(default_text='', size=(30, 5), key=('-OUTPUT-'))],
+    [psg.Button("Confirm"), psg.Button("Clear"), psg.Button("Backtrack")]
     ]
 
 # creating the main window
@@ -15,19 +22,31 @@ window = psg.Window("Calculator", layout, margins=(150, 200), background_color='
 while True:
     event, values = window.read()
     # will end the program if use closes it
-    if event == psg.WIN_CLOSED:
-        break
-
+    if event in (psg.WIN_CLOSED, "Exit"):   # because I have added an Exit button, I can modify the break loop to close the program if Exit is clicked;
+        break                               # I can do this by making the event belong to multiple operations, including closing the window
+    NumIn = values['-INPUT-']
+    if event in ("+", "-", "/", "x", "^"):
+        curr_op = event # this stores the current operation
     if event == "Confirm":  # reading for an event, if you hit confirm will run this loop
-        NumIn = values['-INPUT-']
         try:
-            NumIn = int(NumIn)  # checking if the number that was inut was an integer 
-            print(f"You entered: {NumIn}")
+            NumIn = float(NumIn)  # checking if the number that was inut was an integer 
+            print(f"{NumIn}")
         except ValueError: # if a ValueError is caused
-            response = psg.popup_ok_cancel("Please Enter A Number")  # creates a popup that tells you to correct this issue
-            if response == "Cancel":
-                psg.popup("Closing Program")
-                break
+            response = psg.popup("Please Enter A Number")  # creates a popup that tells you to correct this issue
+            continue
+
+
+    elif event == "+":
+        NumIn = NumIn + NumIn
+    elif event == "-":
+        NumIn = NumIn - NumIn
+    elif event == "/":
+        NumIn = NumIn / NumIn
+    elif event == "x":
+        NumIn = NumIn * NumIn
+    elif event == "^":
+        NumIn = NumIn ^ NumIn
+
 
 window.close()
 # infinite while loop waits for the user to close window for the progam to end
