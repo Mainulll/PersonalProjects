@@ -1,5 +1,5 @@
 # Calculator
-My first personal git repo for my work
+My First Calculator App ; Python
 ----
 Calculator is me trying to learn how to build GUIs in Python using PySimpleGUi
 the calculator is designed to;
