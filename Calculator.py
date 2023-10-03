@@ -1,4 +1,35 @@
 import math
+import PySimpleGUI as psg #toolkit for creating a GUI
+
+# organising the layout for the windows
+layout=[
+    [psg.Text("Enter A Number: ")],
+    [psg.Input(" ")], # take the number input
+    [psg.Button("Confirm")]
+    ]
+
+# creating the main window
+window = psg.Window("Calculator", layout, margins=(150, 200))
+
+# even listener for the main window
+while True:
+    event, values = window.read()
+    # will end the program if use closes it
+    if event == psg.WIN_CLOSED:
+        break
+    
+window.close()
+# infinite while loop waits for the user to close window for the progam to end
+
+
+
+
+
+
+
+
+
+
 
 # testing using While loops
 # loop basically checks for conditions here; as Python typcasts inputs as str
