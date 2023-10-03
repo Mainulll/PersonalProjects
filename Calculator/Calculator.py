@@ -35,7 +35,11 @@ window.close()
 
 # testing using While loops
 # loop basically checks for conditions here; as Python typcasts inputs as str
-while True:
+
+
+# -------
+
+""" while True:
     try:      
         FirstNum = int(input("Enter A Number: "))  #while FirstNum is an int is True, loop will break
         break
@@ -78,4 +82,4 @@ for i in NumSelect:
         print(FirstNum ** SecondNum)
     elif i == 6:
         print(FirstNum )
-
+"""
