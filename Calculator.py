@@ -4,7 +4,7 @@ import PySimpleGUI as psg #toolkit for creating a GUI
 # organising the layout for the windows
 layout=[
     [psg.Text("Enter A Number: ")],
-    [psg.Input(" ")], # take the number input
+    [psg.Input(key='-INPUT-')], # take the number input | PySimpleGUI takes inputs and stores them in a dict, this here will allow for easy access
     [psg.Button("Confirm")]
     ]
 
@@ -17,18 +17,20 @@ while True:
     # will end the program if use closes it
     if event == psg.WIN_CLOSED:
         break
-    
+
+    if event == "Confirm":  # reading for an event, if you hit confirm will run this loop
+        NumIn = values['-INPUT-']
+        try:
+            NumIn = int(NumIn)  # checking if the number that was inut was an integer 
+            break
+        except ValueError: # if a ValueError is caused
+            response = psg.popup_ok_cancel("Please Enter A Number")  # creates a popup that tells you to correct this issue
+            if response == "Cancel":
+                psg.popup("Closing Program")
+                break
+
 window.close()
 # infinite while loop waits for the user to close window for the progam to end
-
-
-
-
-
-
-
-
-
 
 
 # testing using While loops
