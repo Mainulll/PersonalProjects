@@ -33,16 +33,16 @@ for key, value in menu.items():
 
 NumSelect = input("Select An Operation: ")
 for i in NumSelect:
-    if i is 1:
+    if i == 1:
         print(FirstNum + SecondNum)
-    elif i is 2:
+    elif i == 2:
         print(FirstNum - SecondNum)
-    elif i is 3:
+    elif i == 3:
         print(FirstNum* SecondNum)
-    elif i is 4:
+    elif i == 4:
         print(FirstNum / SecondNum)
-    elif i is 5:
+    elif i == 5:
         print(FirstNum ** SecondNum)
-    elif i is 6:
+    elif i == 6:
         print(FirstNum )
 
