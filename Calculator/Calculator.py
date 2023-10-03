@@ -9,7 +9,7 @@ layout=[
     ]
 
 # creating the main window
-window = psg.Window("Calculator", layout, margins=(150, 200))
+window = psg.Window("Calculator", layout, margins=(150, 200), background_color='#808080')
 
 # even listener for the main window
 while True:
@@ -22,7 +22,7 @@ while True:
         NumIn = values['-INPUT-']
         try:
             NumIn = int(NumIn)  # checking if the number that was inut was an integer 
-            break
+            print(f"You entered: {NumIn}")
         except ValueError: # if a ValueError is caused
             response = psg.popup_ok_cancel("Please Enter A Number")  # creates a popup that tells you to correct this issue
             if response == "Cancel":
@@ -33,11 +33,11 @@ window.close()
 # infinite while loop waits for the user to close window for the progam to end
 
 
-# testing using While loops
-# loop basically checks for conditions here; as Python typcasts inputs as str
 
 
 # -------
+# testing using While loops
+# loop basically checks for conditions here; as Python typcasts inputs as str
 
 """ while True:
     try:      
