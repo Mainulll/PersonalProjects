@@ -21,7 +21,8 @@ window = psg.Window("Calculator", layout, margins=(150, 200), background_color='
 next_val = 0 # create a variable to store the current value
 curr_op = None # initialise a variable with a null value
 stored_val = None
-answer = None
+answer = 0
+
 
 # event listener for the main window
 while True:
@@ -42,8 +43,19 @@ while True:
         except ValueError:
             psg.popup("Please Enter A Number")
             continue
-        if curr_opp
-        window['-OUTPUT-'].update(f'{stored_val} {curr_op if curr_op else " "}{next_val if next_val else " "} {"="} {answer if answer else "N/A"}\n')
+        if curr_op is "+":
+            answer = stored_val + next_val
+        elif curr_op is "-":
+            answer = stored_val - next_val
+        elif curr_op is "/":
+            answer = stored_val / next_val
+        elif curr_op is "x":
+            answer = stored_val * next_val
+        elif curr_op is "^":
+            answer = pow(stored_val, next_val)
+
+        
+        window['-OUTPUT-'].update(f'{stored_val} {curr_op if curr_op else " "} {next_val if next_val else " "} {"="} {answer}\n')
         window['-INPUT-'].update(" ")
         
 
