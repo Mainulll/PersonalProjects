@@ -18,6 +18,9 @@ layout=[
 # creating the main window
 window = psg.Window("Calculator", layout, margins=(150, 200), background_color='#808080')
 
+curr_val = 0 # create a variable to store the current value
+curr_op = None # initialise a variable with a null value
+
 # even listener for the main window
 while True:
     event, values = window.read()
@@ -34,20 +37,30 @@ while True:
         except ValueError: # if a ValueError is caused
             response = psg.popup("Please Enter A Number")  # creates a popup that tells you to correct this issue
             continue
+        if curr_op is None:  # if the current operation is none, we will leave the value as it is
+            curr_val = NumIn
+        elif curr_op is "+": # else run this loop
+            curr_val += NumIn
+        elif curr_op is "-":
+            curr_val -= NumIn
+        elif curr_op is "/":
+            curr_val /= NumIn
+        elif curr_op is "^":
+            curr_val ^= NumIn
 
+        # create a running log of previous calculations
+        calc_history = f"{curr_val} {curr_op if curr_op else ''} {NumIn if curr_op else ''}\n"
+        # updating the output box we created with the history, appending to it
+        window['-OUTPUT-'].update(calc_history, append=True)
+        window['-INPUT-'].update(" ")
+    
+    elif event is "Clear":
+        curr_val = 0
+        curr_op = None
+        window['-INPUT-'].update(" ")
+        window["-OUTPUT-"].update(" ")
 
-    elif event == "+":
-        NumIn = NumIn + NumIn
-    elif event == "-":
-        NumIn = NumIn - NumIn
-    elif event == "/":
-        NumIn = NumIn / NumIn
-    elif event == "x":
-        NumIn = NumIn * NumIn
-    elif event == "^":
-        NumIn = NumIn ^ NumIn
-
-
+        
 window.close()
 # infinite while loop waits for the user to close window for the progam to end
 
