@@ -18,16 +18,54 @@ layout=[
 # creating the main window
 window = psg.Window("Calculator", layout, margins=(150, 200), background_color='#808080')
 
-curr_val = 0 # create a variable to store the current value
+next_val = 0 # create a variable to store the current value
 curr_op = None # initialise a variable with a null value
+stored_val = None
+answer = None
 
-# even listener for the main window
+# event listener for the main window
 while True:
     event, values = window.read()
     # will end the program if use closes it
     if event in (psg.WIN_CLOSED, "Exit"):   # because I have added an Exit button, I can modify the break loop to close the program if Exit is clicked;
-        break                               # I can do this by making the event belong to multiple operations, including closing the window
+        break # I can do this by making the event belong to multiple operations, including closing the window
+    # --------------------------------------------------------------------------------------------------------------  
     NumIn = values['-INPUT-']
+    if event in ("+", "-", "/", "x", "^"):
+        stored_val = float(NumIn)
+        curr_op = event
+        window['-INPUT-'].update(" ")
+
+    if event in ("Confirm"):
+        try:
+            next_val = float(NumIn)
+        except ValueError:
+            psg.popup("Please Enter A Number")
+            continue
+        if curr_opp
+        window['-OUTPUT-'].update(f'{stored_val} {curr_op if curr_op else " "}{next_val if next_val else " "} {"="} {answer if answer else "N/A"}\n')
+        window['-INPUT-'].update(" ")
+        
+
+
+
+
+
+window.close()
+
+
+
+
+
+
+
+
+
+
+
+
+
+"""
     if event in ("+", "-", "/", "x", "^"):
         curr_op = event # this stores the current operation
     if event == "Confirm":  # reading for an event, if you hit confirm will run this loop
@@ -58,12 +96,12 @@ while True:
         curr_val = 0
         curr_op = None
         window['-INPUT-'].update(" ")
-        window["-OUTPUT-"].update(" ")
+        window["-OUTPUT-"].update(" ")3
 
         
 window.close()
 # infinite while loop waits for the user to close window for the progam to end
-
+"""
 
 
 
